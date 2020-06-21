@@ -1,0 +1,45 @@
+<div class="row m-5">
+    <div class="col-2">
+        <img [src]="artista.images | noimg" class="img-thumbnail img-circle">
+    </div>
+
+    <div class="col">
+        <h3>{{artista.name}}</h3>
+        <!-- <p>
+            <a [href]="artista.external_urls.spotify" target="_blank">Ir a su perfil</a>
+        </p> -->
+        <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Mas Datos
+          </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <a [href]="artista.external_urls.spotify" target="_blank">Ir a su perfil</a>
+                <br> Seguidores: {{artista.followers.total | number}} <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row m-5">
+    <div class="col">
+
+        <table class="table">
+            <thead>
+                <th>Imagen</th>
+                <th>Album</th>
+                <th>Cancion</th>
+                <th>Previa</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let track of toptracks">
+                    <td> <img [src]="track.album.images | noimg" class="img-thumb"></td>
+                    <td>{{ track.album.name}}</td>
+                    <td>{{ track.name}}</td>
+                    <td><audio [src]="track.preview_url" controls></audio></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
